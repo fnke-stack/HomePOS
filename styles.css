@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#product-list, #order-form {
+    margin: 20px;
+}
+
+#product-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#product-list li {
+    margin-bottom: 10px;
+}
+
+#order-form table {
+    width: 100%;
+}
+
+#order-form th, #order-form td {
+    padding: 5px;
+}
+
+#order-form input[type="number"] {
+    width: 50px;
+}
+
+#order-form button {
+    margin-top: 10px;
+}

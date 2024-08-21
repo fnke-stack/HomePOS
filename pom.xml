@@ -1,18 +1,43 @@
-<dependencies>
-    <!-- Hibernate -->
-    <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>5.4.21.Final</version>
-    </dependency>
+<project xmlns="http://maven.apache.org/POM/3.9.9"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/3.9.9 http://maven.apache.org/xsd/maven-3.9.9.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.yourcompany</groupId>
+    <artifactId>HomePOS</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-    <!-- MySQL Connector -->
-    <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.21</version>
-    </dependency>
-</dependencies>
+    <dependencies>
+        <!-- Spring Boot Starter Data JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>2.5.4</version> <!-- Add the correct version here -->
+        </dependency>
+
+        <!-- H2 Database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version> <!-- Add the correct version here -->
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.32.Final</version> <!-- Add the correct version here -->
+        </dependency>
+
+        <!-- Spring Boot Starter Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.5.4</version> <!-- Add the correct version here -->
+        </dependency>
+
+        <!-- Other dependencies -->
+    </dependencies>
 <dependencies>
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -27,5 +52,26 @@
         <artifactId>h2</artifactId>
         <scope>runtime</scope>
     </dependency>
-    <!-- Add other dependencies as needed -->
+    <!-- Other dependencies -->
 </dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>2.5.4</version> <!-- Ensure the correct version is specified -->
+        </plugin>
+    </plugins>
+</build>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.5.4</version> <!-- Add the correct version here -->
+            </plugin>
+        </plugins>
+    </build>
+</project>

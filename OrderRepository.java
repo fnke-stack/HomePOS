@@ -1,9 +1,11 @@
+
+import com.order.Order; // Ensure the class name is capitalized
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import java.util.List;
+import org.hibernate.Transaction;
 
 public class OrderRepository {
+
     private SessionFactory sessionFactory;
 
     public OrderRepository(SessionFactory sessionFactory) {
@@ -11,19 +13,16 @@ public class OrderRepository {
     }
 
     public void save(Order order) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.save(order);
-        session.getTransaction().commit();
-        session.close();
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.save(order);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback(); // Rollback in case of an error
+            }
+            e.printStackTrace(); // Log the exception (consider using a logging framework)
+        }
     }
-
-    public List<Order> findAll() {
-        Session session = sessionFactory.openSession();
-        List<Order> orders = session.createQuery("from Order", Order.class).list();
-        session.close();
-        return orders;
-    }
-
-    // Add other CRUD methods here
 }

@@ -1,0 +1,23 @@
+@Autowired
+private OrderRepository orderRepository;
+
+@GetMapping("/orders")
+public List<Order> getOrders() {
+    return orderRepository.findAll();
+}
+
+@PostMapping("/orders")
+public Order createOrder(@RequestBody OrderItem orderItem) {
+    Order order = new Order();
+    order.getOrderItems().add(orderItem);
+    orderRepository.save(order);
+    return order;
+}
+
+@Autowired
+private ProductRepository productRepository;
+
+@GetMapping("/products")
+public List<Product> getProducts() {
+    return productRepository.findAll();
+}

@@ -1,0 +1,43 @@
+@RestController
+@RequestMapping("/api")
+public class HomePOSController {
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @GetMapping("/orders")
+    public ResponseEntity<List<Order>> getOrders() {
+        try {
+            List<Order> orders = orderRepository.findAll();
+            return new ResponseEntity<>(orders, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/orders")
+    public ResponseEntity<Order> createOrder(@RequestBody OrderItem orderItem) {
+        try {
+            Order order = new Order();
+            order.getOrderItems().add(orderItem);
+            Order savedOrder = orderRepository.save(order);
+            return new ResponseEntity<>(savedOrder, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProducts() {
+        try {
+            List<Product> products = productRepository.findAll();
+            return new ResponseEntity<>(products, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+}
+
